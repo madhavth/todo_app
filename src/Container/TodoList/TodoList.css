@@ -10,3 +10,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.AddTodoHere {
+    width: 350px;
+    margin: auto;
+    border: 1px solid green;
+    color:green;
+}

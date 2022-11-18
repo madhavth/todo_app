@@ -2,7 +2,8 @@ import Todo from "../../Component/Todo/Todo";
 import './TodoList.css';
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {CircularProgress} from "@mui/material";
+import {CircularProgress, Link} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 export default function TodoList(props) {
     const [todosState, setTodosState] = useState({
@@ -67,7 +68,16 @@ export default function TodoList(props) {
 }
 
 function NoTodosAddedYet() {
+    const navigate = useNavigate();
+
     return (<div className={'noTodo'}>
         No todos added yet!!!
+        <div onClick={
+            () => {
+                navigate('todos/add');
+            }
+        } className={'AddTodoHere'}>
+            click here to add
+        </div>
     </div>);
 }

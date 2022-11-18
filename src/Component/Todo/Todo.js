@@ -77,7 +77,7 @@ export default function Todo(props) {
             }}>
                 {todoState.state === TODO_STATES.deleting ? <CircularProgress/> : '-'}
             </Fab>
-                <Fab onClick={
+                <Fab className={'Fab'} onClick={
                     () => {
                         if (todoState.state === TODO_STATES.editing) {
                             updateTodo(todo.id);

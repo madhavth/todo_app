@@ -16,10 +16,8 @@
 
 .FabDiv {
     width: 100%;
-    align-items:end;
-    justify-content: right;
 }
 
 .Fab {
-    margin-right: 10px;
+    margin: 12px;
 }
