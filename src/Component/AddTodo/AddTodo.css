@@ -1,0 +1,16 @@
+.addTodo {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    grid-row-gap: 12px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+button {
+    margin-top: 40px;
+    width: 160px;
+    justify-content: center;
+    align-items: center;
+}
