@@ -1,12 +1,12 @@
 import './AddTodo.css';
 import {useRef} from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 export default function AddTodo() {
     const formRef = useRef();
     const navigate = useNavigate();
-    
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -15,7 +15,17 @@ export default function AddTodo() {
             description: formRef.current.description.value,
             done: formRef.current.done.value === "true"
         };
-        
+
+        if (!todo.title) {
+            alert('title cant be empty !!!');
+            return;
+        }
+
+        if (!todo.description) {
+            alert('description cant be empty !!!');
+            return;
+        }
+
         axios.post('http://localhost:8080/todos', todo)
             .then((response) => {
                 navigate('/');
