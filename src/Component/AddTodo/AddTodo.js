@@ -13,7 +13,7 @@ export default function AddTodo() {
         const todo = {
             title: formRef.current.title.value,
             description: formRef.current.description.value,
-            done: formRef.current.done.value === "true"
+            done: formRef.current.done.checked
         };
 
         if (!todo.title) {
