@@ -3,3 +3,10 @@
     font-weight: bold;
     margin-top: 120px;
 }
+
+.todoList {
+    display: flex;
+    margin: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

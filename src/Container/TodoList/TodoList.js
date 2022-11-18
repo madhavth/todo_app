@@ -6,25 +6,23 @@ import {CircularProgress} from "@mui/material";
 
 export default function TodoList(props) {
     const [todosState, setTodosState] = useState({
-        'state': 'fetching',
-        'data': [],
-        message: ''
+        'state': 'fetching', 'data': [],
     });
+
+    const [selectedTodo, setSelectedTodo] = useState(null);
 
     const fetchTodos = () => {
         axios.get('http://localhost:8080/todos')
             .then((response) => {
                 setTodosState({
-                    'state': 'done',
-                    'data': response.data
+                    'state': 'done', 'data': response.data
                 });
             })
             .catch((error) => {
                 console.log(error.message);
                 setTodosState({
-                    'state': 'error',
-                    'message': `${error.message}`
-                })
+                    'state': 'error', 'message': `${error.message}`, data: []
+                });
             });
     };
 
@@ -32,13 +30,19 @@ export default function TodoList(props) {
         fetchTodos();
     }, []);
 
+    function onClickHandler(todo) {
+        setSelectedTodo(todo);
+    }
+
     if (todosState.state === 'fetching') {
         return <CircularProgress/>;
     }
-    
-    if(todosState.state === 'error') {
+
+    if (todosState.state === 'error') {
         return <div>
-            <div><text>{todosState.message}</text></div>
+            <div>
+                <text>{todosState.message}</text>
+            </div>
             <button>retry</button>
         </div>;
 
@@ -49,9 +53,13 @@ export default function TodoList(props) {
     }
 
     const todosList = todosState.data.map((todo) => {
-        return <Todo todo={todo}/>
+        return <div key={todo.id}><Todo todo={todo} selected={selectedTodo && selectedTodo.id === todo.id}
+                                        fetchTodoHandler={() => {
+                                            fetchTodos();
+                                        }}
+                                        onClick={onClickHandler}/></div>;
     });
-    
+
     return (<div className={'todoList'}>
         {todosList}
     </div>);

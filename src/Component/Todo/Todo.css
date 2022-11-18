@@ -1,0 +1,26 @@
+.Todo {
+    display: grid;
+    border: 1px solid green;
+    margin: 48px;
+    height: 200px;
+    width: 300px;
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.Selected {
+    background-color: blue;
+    color: white;
+}
+
+.FabDiv {
+    width: 100%;
+    align-items:end;
+    justify-content: right;
+}
+
+.Fab {
+    /*justify-content: right;*/
+    /*align-items: end;*/
+}
