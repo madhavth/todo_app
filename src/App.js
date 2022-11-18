@@ -3,8 +3,9 @@ import './App.css';
 import TodoList from "./Container/TodoList/TodoList";
 import Todo from "./Component/Todo/Todo";
 import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
-import AboutMe from "./Component/About/AboutMe";
+import AboutMe, {Test1} from "./Component/About/AboutMe";
 import AddTodo from "./Component/AddTodo/AddTodo";
+import NotFound from "./Component/NotFound/NotFound";
 
 function App() {
     return (
@@ -25,9 +26,12 @@ function App() {
                 </header>
 
                 <Routes>
-                    <Route path='/' element={<TodoList/>}/>
-                    <Route path={'/about'} element={<AboutMe/>}/>
+                    <Route path='' element={<TodoList/>}/>
+                    <Route path={'about'} element={<AboutMe/>}>
+                        <Route path={'test'} element={<Test1/>}/>
+                    </Route>
                     <Route path={'/todos/add'} element={<AddTodo/>}/>
+                    <Route path={'*'} element={<NotFound/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
